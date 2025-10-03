@@ -1,5 +1,5 @@
 import { projects } from "../data/projects";
-import projectsBackground from "../assets/image/background/work-section-background.png";
+// import projectsBackground from "../assets/image/background/work-section-bg.png";
 
 const Projects = () => {
   return (
@@ -7,7 +7,9 @@ const Projects = () => {
       <section className="py-20 px-4">
         <div
           className="bg-cover bg-center rounded-[40px] lg:rounded-[80px] p-12 md:p-20 flex flex-col"
-          style={{ backgroundImage: `url(${projectsBackground})` }}
+          style={{
+            backgroundImage: `url(${`https://img.freepik.com/free-photo/artistic-blurry-colorful-wallpaper-background_58702-8591.jpg?semt=ais_hybrid&w=740&q=80`})`,
+          }}
         >
           {/* Header */}
           <div className="mb-16 md:mb-24 text-center">

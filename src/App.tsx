@@ -1,13 +1,17 @@
 import { Outlet } from "react-router";
-import CommonLayout from "./components/layout/CommonLayout";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 const App = () => {
   return (
-    <div className="min-h-svh flex flex-col items-center justify-center">
-      <CommonLayout>
-        <Outlet></Outlet>
-      </CommonLayout>
-    </div>
+    <>
+      {/* Navbar  */}
+      <Navbar></Navbar>
+      {/* Outlet for nested routes */}
+      <Outlet></Outlet>
+      {/* Footer */}
+      <Footer></Footer>
+    </>
   );
 };
 

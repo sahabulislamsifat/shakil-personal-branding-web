@@ -1,5 +1,20 @@
+import { useState } from "react";
+import { processSteps } from "../../data/processSteps";
+import { faqs } from "../../data/faq";
+
 // Accordion Component
-function Accordion({ faq, isOpen, onClick }) {
+type FaqType = {
+  question: string;
+  answer: string;
+};
+
+type AccordionProps = {
+  faq: FaqType;
+  isOpen: boolean;
+  onClick: () => void;
+};
+
+function Accordion({ faq, isOpen, onClick }: AccordionProps) {
   return (
     <div className="py-3">
       <button onClick={onClick} className="flex w-full text-left gap-3">
@@ -17,7 +32,7 @@ function Accordion({ faq, isOpen, onClick }) {
 }
 
 const Faq = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(null as number | null);
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-16 space-y-16">

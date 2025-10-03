@@ -1,3 +1,8 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { CgArrowRight } from "react-icons/cg";
+import Awards from "./Awards";
+
 const Hero = () => {
   const [isButtonHovered, setIsButtonHovered] = useState(false);
 

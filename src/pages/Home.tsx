@@ -1,5 +1,6 @@
 import Faq from "../features/faq/Faq";
 import Hero from "../features/hero/Hero";
+import Services from "../features/services/Services";
 import Projects from "./Projects";
 
 const Home = () => {
@@ -9,6 +10,8 @@ const Home = () => {
       <Hero></Hero>
       {/* Project Section */}
       <Projects></Projects>
+      {/* Service Section */}
+      <Services></Services>
       {/* Faq Section */}
       <Faq></Faq>
     </div>
