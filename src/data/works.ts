@@ -1,4 +1,4 @@
-export const projects = [
+export const works = [
   {
     id: 1,
     title: "Woodx Interior",

@@ -1,7 +1,7 @@
-import { projects } from "../data/projects";
+import { works } from "../data/works";
 // import projectsBackground from "../assets/image/background/work-section-bg.png";
 
-const Projects = () => {
+const Works = () => {
   return (
     <div>
       <section className="py-20 px-4">
@@ -24,7 +24,7 @@ const Projects = () => {
 
           {/* Works Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 max-w-6xl mx-auto">
-            {projects.map((work, index) => (
+            {works.map((work, index) => (
               <div
                 key={work.id}
                 className={`flex flex-col ${
@@ -77,4 +77,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default Works;

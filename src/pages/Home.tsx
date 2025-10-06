@@ -1,7 +1,7 @@
-import Faq from "../features/faq/Faq";
-import Hero from "../features/hero/Hero";
-import Services from "../features/services/Services";
-import Projects from "./Projects";
+import FAQ from "../components/modules/contact/FAQ";
+import Hero from "../components/modules/home/hero/Hero";
+import Services from "./Services";
+import Works from "./Works";
 
 const Home = () => {
   return (
@@ -9,11 +9,11 @@ const Home = () => {
       {/* Hero Section  */}
       <Hero></Hero>
       {/* Project Section */}
-      <Projects></Projects>
+      <Works></Works>
       {/* Service Section */}
       <Services></Services>
       {/* Faq Section */}
-      <Faq></Faq>
+      <FAQ></FAQ>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { services } from "../../data/services";
-import type { Service } from "../../types";
+import { services } from "../data/services";
+import type { Service } from "../types";
 
 const ImageLayout = ({ service }: { service: Service }) => {
   // 1. Logo Design → 5 no service এর proportion মতো

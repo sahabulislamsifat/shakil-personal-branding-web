@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { processSteps } from "../../data/processSteps";
-import { faqs } from "../../data/faq";
+import { processSteps } from "../../../data/processSteps";
+import { faqs } from "../../../data/faqs";
 
 // Accordion Component
 type FaqType = {
@@ -31,7 +31,7 @@ function Accordion({ faq, isOpen, onClick }: AccordionProps) {
   );
 }
 
-const Faq = () => {
+const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null as number | null);
 
   return (
@@ -75,4 +75,4 @@ const Faq = () => {
   );
 };
 
-export default Faq;
+export default FAQ;

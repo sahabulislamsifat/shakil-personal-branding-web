@@ -1,21 +1,22 @@
-import { awards } from "../../data/awards";
+import { awards } from "../../../../data/awards";
 
 const Awards = () => {
   return (
-    <section className="px-4 sm:px-6 lg:px-0">
+    <section className="sm:px-6 lg:px-60">
       <div className="text-center mb-6 sm:mb-10">
         <p className="text-sm uppercase tracking-widest text-gray-500 font-medium">
           Recognized by industry leaders
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 md:gap-10 justify-items-center items-center">
+      <div className="grid sm:grid-cols-2 md:grid-cols-5 sm:gap-8 md:gap-1 justify-items-center items-center">
         {awards.map((award, idx) => (
           <div key={idx} className="group relative">
             <img
+              sizes="60"
               src={award.img}
               alt={award.alt}
-              className="h-10 sm:h-12 md:h-14 object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+              className="h-10 px-2 py-1 bg-transparent md:h-16 object-contain opacity-80 group-hover:opacity-100 hover:bg-blend-soft-light transition-opacity duration-300"
             />
 
             {/* Hover card */}

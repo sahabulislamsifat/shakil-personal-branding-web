@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Awards from "../modules/home/hero/Awards";
 // import workSectionBackground from "../../assets/image/background/work-section-bg.png";
-import Awards from "../../features/hero/Awards";
 
 const Footer = () => {
   const [logoSize, setLogoSize] = useState("text-4xl");
