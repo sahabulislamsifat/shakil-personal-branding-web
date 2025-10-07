@@ -1,4 +1,5 @@
 import FAQ from "../components/modules/contact/FAQ";
+import BrandIntroduce from "../components/modules/home/brand/BrandIntroduce";
 import Hero from "../components/modules/home/hero/Hero";
 import Services from "./Services";
 import Works from "./Works";
@@ -8,7 +9,9 @@ const Home = () => {
     <div>
       {/* Hero Section  */}
       <Hero></Hero>
-      {/* Project Section */}
+      {/* Brand Introduce Section */}
+      <BrandIntroduce></BrandIntroduce>
+      {/* Work Section */}
       <Works></Works>
       {/* Service Section */}
       <Services></Services>

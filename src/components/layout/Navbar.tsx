@@ -59,8 +59,8 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
           >
             <span className="text-blue-500 font-light">De</span>
-            <span className="text-blue-600 font-medium">sh</span>
-            <span className="text-blue-600 font-extrabold">akil.</span>
+            <span className="text-blue-600 font-medium">st</span>
+            <span className="text-blue-600 font-extrabold">udio.</span>
           </motion.div>
 
           {/* Right Section */}
