@@ -1,171 +1,205 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
-import { services } from "../data/services";
-import type { Service } from "../types";
+import { motion, AnimatePresence } from "framer-motion";
+import { services } from "./../data/services";
 
-const ImageLayout = ({ service }: { service: Service }) => {
-  // 1. Logo Design → 5 no service এর proportion মতো
-  if (service.id === 1) {
+// 🔹 Image Layout Component (4 unique responsive designs)
+const ImageLayout = ({ service }: any) => {
+  const { id, images } = service;
+
+  if (id === 1) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {/* Left: 2 small images stacked */}
-        <div className="flex flex-col gap-4">
-          {service.images.slice(0, 2).map((_, idx) => (
-            <div
-              key={idx}
-              className="bg-gray-300 aspect-square flex items-center justify-center"
-            >
-              Small {idx + 1}
-            </div>
-          ))}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+        <img
+          src={images[0]}
+          alt=""
+          className="col-span-2 md:col-span-2 w-full h-auto md:h-64 object-cover rounded-lg shadow-md"
+        />
+        <img
+          src={images[1]}
+          alt=""
+          className="w-full h-auto md:h-full object-cover rounded-lg shadow-md row-span-2"
+        />
+        <img
+          src={images[2]}
+          alt=""
+          className="w-full h-auto md:h-64 object-cover rounded-lg shadow-md md:col-span-2"
+        />
+      </div>
+    );
+  }
+
+  if (id === 2) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+        <img
+          src={images[0]}
+          alt=""
+          className="w-full h-auto md:h-80 object-cover rounded-lg shadow-md md:col-span-2"
+        />
+        <img
+          src={images[1]}
+          alt=""
+          className="w-full h-auto md:h-48 object-cover rounded-lg shadow-md"
+        />
+        <img
+          src={images[2]}
+          alt=""
+          className="w-full h-auto md:h-48 object-cover rounded-lg shadow-md"
+        />
+      </div>
+    );
+  }
+
+  // Layout 3 – Horizontal Split
+  if (id === 3) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+        <img
+          src={images[0]}
+          alt=""
+          className="w-full h-auto md:h-full object-cover rounded-lg shadow-md"
+        />
+        <div className="flex flex-col gap-3 md:gap-4">
+          <img
+            src={images[1]}
+            alt=""
+            className="w-full h-auto md:h-48 object-cover rounded-lg shadow-md"
+          />
+          <img
+            src={images[2]}
+            alt=""
+            className="w-full h-auto md:h-48 object-cover rounded-lg shadow-md"
+          />
+          <img
+            src={images[3]}
+            alt=""
+            className="w-full h-auto md:h-48 object-cover rounded-lg shadow-md"
+          />
         </div>
-        {/* Right: 1 big image */}
-        <div className="bg-gray-300 aspect-video sm:aspect-auto sm:h-full flex items-center justify-center">
-          Big Image
-        </div>
       </div>
     );
   }
 
-  // 2. Branding → 2x2 grid
-  if (service.id === 2) {
+  // Layout 4 – Gallery Collage
+  if (id === 4) {
     return (
-      <div className="grid grid-cols-2 gap-4">
-        {service.images.map((_, idx) => (
-          <div
-            key={idx}
-            className="bg-gray-300 aspect-square flex items-center justify-center"
-          >
-            Image {idx + 1}
-          </div>
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+        <img
+          src={images[0]}
+          alt=""
+          className="w-full h-auto md:h-48 object-cover rounded-lg shadow-md"
+        />
+        <img
+          src={images[1]}
+          alt=""
+          className="w-full h-auto md:h-48 object-cover rounded-lg shadow-md"
+        />
+        <img
+          src={images[2]}
+          alt=""
+          className="w-full h-auto md:h-80 object-cover rounded-lg shadow-md md:col-span-2"
+        />
       </div>
     );
   }
 
-  // 3 & 4. Packaging & Website → 1 big image (lomba)
-  if (service.id === 3 || service.id === 4) {
-    return (
-      <div className="h-48 sm:h-64 md:h-[332px] bg-gray-300 flex items-center justify-center">
-        Big Image
-      </div>
-    );
-  }
-
-  // 5. Print Design → reverse left-to-right
-  if (service.id === 5) {
-    return (
-      <div className="grid grid-cols-2 gap-4">
-        {/* Top row: right image first, left empty space */}
-        <div className="bg-transparent hidden sm:block"></div>
-        <div className="bg-gray-300 aspect-square flex items-center justify-center col-span-2 sm:col-span-1">
-          Img 1
-        </div>
-
-        {/* Bottom row: reverse order */}
-        {service.images
-          .slice(1, 3)
-          .reverse()
-          .map((_, idx) => (
-            <div
-              key={idx}
-              className="bg-gray-300 aspect-square flex items-center justify-center"
-            >
-              Img {idx + 2}
-            </div>
-          ))}
-      </div>
-    );
-  }
-
-  return null;
+  // Default fallback layout
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+      {images.map((img: string, idx: number) => (
+        <img
+          key={idx}
+          src={img}
+          alt={`service-${id}-${idx}`}
+          className="w-full h-auto object-cover rounded-lg shadow-md"
+        />
+      ))}
+    </div>
+  );
 };
 
-// Checklist
-const Checklist = ({ items }: { items: string[] }) => {
-  const [checked, setChecked] = useState(Array(items.length).fill(false));
-
-  const toggleCheck = (index: number) => {
-    const updated = [...checked];
-    updated[index] = !updated[index];
-    setChecked(updated);
-  };
+// 🔹 Accordion Component
+const Accordion = ({ items }: { items: { title: string; desc: string }[] }) => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const toggleOpen = (index: number) =>
+    setOpenIndex(openIndex === index ? null : index);
 
   return (
-    <ul className="space-y-2">
+    <ul className="space-y-4 md:space-y-6">
       {items.map((item, idx) => (
-        <li
-          key={idx}
-          className="flex items-start space-x-3 cursor-pointer"
-          onClick={() => toggleCheck(idx)}
-        >
-          <div
-            className={`w-5 h-5 flex-shrink-0 mt-0.5 flex items-center justify-center border rounded-none ${
-              checked[idx] ? "bg-black border-black" : "border-gray-400"
-            }`}
+        <li key={idx} className="pb-3 md:pb-4 border-b border-gray-300">
+          <p
+            className="font-semibold text-gray-800 cursor-pointer hover:text-black transition text-base md:text-lg"
+            onClick={() => toggleOpen(idx)}
           >
-            {checked[idx] && (
-              <svg
-                className="w-4 h-4 text-white"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
+            {item.title}
+          </p>
+          <AnimatePresence>
+            {openIndex === idx && (
+              <motion.p
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="mt-2 text-gray-600 text-sm md:text-base overflow-hidden"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
+                {item.desc}
+              </motion.p>
             )}
-          </div>
-          <span className="text-gray-700 text-sm md:text-base">{item}</span>
+          </AnimatePresence>
         </li>
       ))}
     </ul>
   );
 };
 
+// 🔹 Main Services Component
 const Services = () => {
   return (
-    <section className="py-8 md:py-16 px-4 sm:px-6 max-w-6xl mx-auto">
+    <section className="py-8 md:py-16 px-4 sm:px-6 w-11/12 md:w-10/12 mx-auto">
       {services.map((service) => (
         <div
           key={service.id}
-          className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start mb-12 md:mb-20"
+          className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start mb-12 h-auto md:h-[880px]"
         >
-          {/* Sidebar - now appears above on mobile */}
-          <div className="md:col-span-3">
-            <ul className="text-lg md:text-xl font-medium">
-              <li className="text-black font-semibold text-xl md:text-2xl">
-                {service.id}. {service.title}
-              </li>
-              {service.subtitle.map((sub, idx) => (
-                <li
-                  key={idx}
-                  className="ml-4 md:ml-6 text-gray-400 text-sm md:text-base"
-                >
-                  {sub}
-                </li>
-              ))}
-            </ul>
+          {/* Sidebar */}
+          <div className="md:col-span-3 flex flex-col gap-4 mb-6 md:mb-0">
+            <h2 className="text-black font-semibold text-2xl md:text-4xl">
+              <span
+                onClick={() =>
+                  (window.location.href = `/services/${service.id}`)
+                }
+                className="cursor-pointer text-3xl md:text-5xl font-sans text-black hover:text-gray-700 transition"
+              >
+                {service.title}
+              </span>
+            </h2>
           </div>
 
-          {/* Main content */}
-          <div className="md:col-span-9">
-            {/* Description full width */}
-            <p className="text-gray-700 leading-relaxed mb-6 md:mb-8 w-full max-w-full md:max-w-[650px] text-sm md:text-base">
-              {service.description}
-            </p>
-
-            {/* Split row: Images (2/3) + Checklist (1/3) */}
+          {/* Main Content */}
+          <div className="md:col-span-9 space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               <div className="md:col-span-2 order-2 md:order-1">
                 <ImageLayout service={service} />
               </div>
-              <div className="md:col-span-1 order-1 md:order-2 md:mt-0">
-                <Checklist items={service.features} />
+              <div className="md:col-span-1 order-1 md:order-2 text-lg md:text-2xl font-sans h-full flex flex-col justify-between">
+                <Accordion items={service.features} />
               </div>
+            </div>
+
+            <div>
+              <p className="text-gray-700 leading-relaxed text-sm md:text-base mb-4">
+                {service.description}
+              </p>
+              <button
+                onClick={() =>
+                  (window.location.href = `/services/${service.id}`)
+                }
+                className="mt-2 px-5 md:px-6 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition text-sm md:text-base"
+              >
+                {service.title}
+              </button>
             </div>
           </div>
         </div>
